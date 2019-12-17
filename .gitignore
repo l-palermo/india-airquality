@@ -26,4 +26,4 @@ yarn-error.log*
 .gitignore
 
 # api key
-.api_key.js
+api_key.js
