@@ -1,16 +1,32 @@
 import React from 'react';
-import { shallow, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { render } from '@testing-library/react';
 import IndiaMap from './IndiaMap';
 
-configure({ adapter: new Adapter() });
-
 describe('IndiaMap', () => {
-  let wrapper;
+  let loadGoogle;
+  let loadMap;
+  let findPlace;
+  let dataEN;
+
   beforeEach(() => {
-    wrapper = shallow(<IndiaMap />);
+    loadGoogle = jest.fn(() => new Promise((resolve) => resolve()));
+    loadMap = jest.fn();
+    findPlace = jest.fn();
+    dataEN = {};
+    render(<IndiaMap
+      dataEN={dataEN}
+      loadGoogle={loadGoogle}
+      loadMap={loadMap}
+      findPlace={findPlace}
+    />);
   });
-  it('renders without crashing', () => {
-    expect(wrapper).toHaveLength(1);
+  test('calls the loadGoogle  module', () => {
+    expect(loadGoogle).toHaveBeenCalled();
+  });
+  test('calls the loadMap module', () => {
+    expect(loadMap).toHaveBeenCalled();
+  });
+  test('calls the findPlace module', () => {
+    expect(findPlace).toHaveBeenCalled();
   });
 });
