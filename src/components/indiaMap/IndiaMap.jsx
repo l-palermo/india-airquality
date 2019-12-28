@@ -9,6 +9,14 @@ export default function IndiaMap({
 }) {
   const [geocoder, setGeocoder] = useState();
   const [map, setMap] = useState();
+  const citiesList = [];
+
+  const cities = () => {
+    for (let i = 1; i <= Number(dataEN.total_cities_1_value); i += 1) {
+      citiesList.push(dataEN[`compare-tabs_1_city_${i}_name`]);
+    }
+    return citiesList;
+  };
 
   useEffect(() => {
     loadGoogle()
@@ -24,7 +32,7 @@ export default function IndiaMap({
         { geocoder
           && (
           <Geocode
-            dataEN={dataEN}
+            dataEN={cities()}
             map={map}
             geocoder={geocoder}
           />

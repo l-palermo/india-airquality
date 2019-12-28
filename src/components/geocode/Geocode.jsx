@@ -2,27 +2,28 @@ import React, { useState, useEffect } from 'react';
 import Marker from '../marker/Marker';
 
 export default function Geocode({ dataEN, map, geocoder }) {
-  const [coordinates, setCoordinates] = useState();
+  const coordinates = [{ lat: 19.077577, lng: 72.930515 }];
+
+/*   const [coordinates, setCoordinates] = useState();
 
   const coordinatesList = [];
   let i = 1;
-  let time = 100;
-  let cityName;
+  let time = 400;
 
 
   const findCoordinates = (func) => {
-    cityName = dataEN[`compare-tabs_1_city_${i}_name`];
-    geocoder.geocode({ address: cityName }, (results, status) => {
+    geocoder.geocode({ address: dataEN[i] }, (results, status) => {
       if (status === 'OK') {
         i += 1;
+        console.log(results[0].geometry.location);
         coordinatesList.push(results[0].geometry.location);
       } else {
         console.log(status);
         time += 100;
       }
     });
-    if (i <= 10) { func(); }
-    if (coordinatesList.length === 10) {
+    if (i <= 1) { func(); }
+    if (coordinatesList.length === 1) {
       setCoordinates(coordinatesList);
     }
   };
@@ -31,7 +32,7 @@ export default function Geocode({ dataEN, map, geocoder }) {
 
   useEffect(() => {
     run();
-  }, []);
+  }, []); */
 
 
   return (
